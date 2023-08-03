@@ -19,3 +19,28 @@ Crear un script Bash que realice los siguiente:
 
 ## Desarrollo de la actividad
 
+1. Crear el folder de la actividad en el repositorio local.
+2. Crear el archivo `saludos.log` en `/tmp/<fecha>/`.
+
+![Crear_Archivo](/actividades/Actividad2/img/parte1.png)
+
+3. Ingresar el siguiente codigo en el archivo `saludos.log`:
+
+``` 
+echo "Hola ${GITHUB_USER} User id: ${id}. Cuenta fue creada el: ${created_at}"
+```
+Donde:
+   * `${GITHUB_USER}` es el valor de la variable `GITHUB_USER`.
+   * `${id}` es el valor del atributo `id` del JSON obtenido en el paso 2.
+   * `${created_at}` es el valor del atributo `created_at` del JSON obtenido en el paso 2.
+
+![Mensaje_Archivo](/actividades/Actividad2/img/parte2.png)
+
+4. Ejecutar el comando en terminal:
+
+``` 
+sudo systemctl enable cron
+```
+![Cron](/actividades/Actividad2/img/parte3.png)
+
+5. 
