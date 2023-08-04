@@ -43,4 +43,29 @@ sudo systemctl enable cron
 ```
 ![Cron](/actividades/Actividad2/img/parte3.png)
 
-5. 
+5. Estructura de Corn:
+```
+minute hour day_of_month month day_of_week command_to_execute
+```
+
+6. Comando para editar su contrab con el siguiente comando:
+```
+crontab -e
+```
+![Editar](/actividades/Actividad2/img/parte4.png)
+
+7. Ingresar la siguiente linea en el archivo:
+```
+5 0 * * * bash /tmp/3-8-2023/saludos.log
+```
+
+8. Comando para ver el contenido de su contrab:
+```
+crontab -l
+```
+![Ver](/actividades/Actividad2/img/parte5.png)
+
+8. Comando para ver el log de su contrab:
+```
+bash /tmp/3-8-2023/saludos.log
+```
