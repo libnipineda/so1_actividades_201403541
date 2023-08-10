@@ -115,3 +115,123 @@ Crear un md file y resolver cada uno de los items solicitados a continución. De
 
 ### 3. Gestion de permisos
 ---
+1. Creacion de Archivos y Directorios
+    + Como 'usuario1', crea un archivo llamado 'archivo1.txt' en su directorio principal y escribe algo en él.
+    ```
+    touch archivo1.txt
+    echo "Hola mundo" > archivo1.txt
+    ```
+    + Crea un directorio llamado 'directorio1' y dentro de ese directorio, un archivo llamado 'archivo2.txt'.
+    ```
+    mkdir directorio1
+    cd directorio1
+    touch archivo2.txt
+    ```
+
+2. Verificar permisos
+    + Verifica los permisos del archivo y directorio usando el comando `ls -l` y `ls -ld` respectivamente.
+    ```
+    ls -l archivo1.txt
+    ls -ld directorio1
+    ```
+
+3. Modificar Permisos usando 'CHMOD' con modo numerico
+    + Cambia los permisos del `archivo1.txt` para que sólo `usuario1` pueda leer y escribir (permisos `rw-`), el grupo pueda leer (permisos `r--`) y nadie más pueda hacer nada.
+    ```
+    chmod 640 archivo1.txt
+    ```
+    + Para verificar los permisos se utiliza el comando `ls -l`
+    ```
+    ls -l archivo1.txt
+    ```
+    + El resultado debe de ser el siguiente:
+    ```
+    -rw-r-----
+    ```
+
+4. Modificar permisos usando 'CHMOD' con modo simbolico
+       + Agrega permiso de ejecución al propietario del `archivo2.txt`.
+        ```
+        chmod u+x archivo2.txt
+        ```
+        + Para verificar los permisos se utiliza el comando `ls -l`
+        ```
+        ls -l archivo2.txt
+        ```
+        + El resultado debe de ser el siguiente:
+        ```
+        -rwxr-----
+        ```
+
+5. Cambiar el grupo propietario
+    + Cambia el grupo propietario de `archivo2.txt` a `grupo1`.
+    ```
+    chgrp grupo1 archivo2.txt
+    ```
+    + Para verificar los permisos se utiliza el comando `ls -l`
+    ```
+    ls -l archivo2.txt
+    ```
+    + El resultado debe de ser el siguiente:
+    ```
+    -rwxr----- 1 usuario1 grupo1
+    ```
+
+6. Configurar permisos de directorio
+    + Cambia los permisos del `directorio1` para que sólo el propietario pueda entrar (permisos `rwx`), el grupo pueda listar contenidos pero no entrar (permisos `r--`), y otros no puedan hacer nada.
+    ```
+    chmod 750 directorio1
+    ```
+    + Para verificar los permisos se utiliza el comando `ls -ld`
+    ```
+    ls -ld directorio1
+    ```
+    + El resultado debe de ser el siguiente:
+    ```
+    drwxr-x---
+    ```
+
+7. Comprobacion de acceso
+    + Intenta acceder al `archivo1.txt` y `directorio1/archivo2.txt` como `usuario2`. Nota cómo el permiso de directorio afecta el acceso a los archivos dentro de él.
+    ```
+    cd ..
+    su usuario2
+    cd directorio1
+    cat archivo2.txt
+    ```
+    + El resultado debe de ser el siguiente:
+    ```
+    cat: archivo2.txt: Permiso denegado
+    ```
+    + Para verificar los permisos se utiliza el comando `ls -l`
+    ```
+    ls -l archivo1.txt
+    ls -l directorio1/archivo2.txt
+    ```
+    + El resultado debe de ser el siguiente:
+    ```
+    -rw-r-----
+    -rwxr-----
+    ```
+    + Para verificar los permisos se utiliza el comando `ls -ld`
+    ```
+    ls -ld directorio1
+    ```
+    + El resultado debe de ser el siguiente:
+    ```
+    drwxr-x---
+    ```
+
+8. Verificacion final
+    + Verifica los permisos y propietario de los archivos y directorio nuevamente con `ls -l` y `ls -ld`.
+    ```
+    ls -l archivo1.txt
+    ls -l directorio1/archivo2.txt
+    ls -ld directorio1
+    ```
+    + El resultado debe de ser el siguiente:
+    ```
+    -rw-r-----
+    -rwxr-----
+    drwxr-x---
+    ```
