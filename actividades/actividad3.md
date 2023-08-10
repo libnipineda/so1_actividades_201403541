@@ -67,3 +67,51 @@ Crear un md file y resolver cada uno de los items solicitados a continución. De
     sudo passwd usuario2
     sudo passwd usuario3
     ```
+
+3. Informacion de usuarios
+    + Mostrar la información de usuario1 usando el comando 'id'.
+    ```
+    id usuario1
+    ```
+
+4. Eliminacion de usuarios
+    + Eliminar el usuario3, pero conservar su directorio principal.
+    ```
+    sudo userdel usuario3
+    ```
+    + Para conservar el directorio principal se debe de agregar el parametro -r
+    ```
+    sudo userdel -r usuario3
+    ```
+
+### 2. Gestion de grupos
+---
+1. Creacion de Grupos
+    + Crear dos grupos llamados 'grupo1' y 'grupo2'.
+    ```
+    sudo groupadd grupo1
+    sudo groupadd grupo2
+    ```
+
+2. Agregar Usuarios a Grupos
+    + Agregar 'usuario1' a 'grupo1' y 'usuario2' a 'grupo2'.
+    ```
+    sudo usermod -a -G grupo1 usuario1
+    sudo usermod -a -G grupo2 usuario2
+    ``` 
+
+3. Verificar Membresia
+    + Verificar que los usuarios han sido agregados a los grupos utilizando el comando 'groups'.
+    ```
+    groups usuario1
+    groups usuario2
+    ```
+
+4. Eliminar Grupos
+    + Eliminar 'grupo2'.
+    ```
+    sudo groupdel grupo2
+    ```
+
+### 3. Gestion de permisos
+---
